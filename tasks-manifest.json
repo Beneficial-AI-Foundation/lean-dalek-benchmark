@@ -1,0 +1,109 @@
+{
+  "sourceCommit": "196bdd282308ff3f95a8fb329c33411859e8f457",
+  "summary": {
+    "totalFiles": 25,
+    "totalTasks": 172
+  },
+  "files": [
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/CurveModels/ProjectivePoint/Double.lean",
+      "tasks": 16
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Field/FieldElement51/AddAssign.lean",
+      "tasks": 8
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Field/FieldElement51/Negate.lean",
+      "tasks": 7
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Field/FieldElement51/Reduce.lean",
+      "tasks": 7
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Field/FieldElement51/Square2.lean",
+      "tasks": 8
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Field/FieldElement51/Sub.lean",
+      "tasks": 2
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Field/FieldElement51/ToBytes.lean",
+      "tasks": 12
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/M.lean",
+      "tasks": 1
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/Add.lean",
+      "tasks": 16
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/AsMontgomery.lean",
+      "tasks": 2
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/Invert.lean",
+      "tasks": 2
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/MontgomeryMul.lean",
+      "tasks": 1
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/MulInternal.lean",
+      "tasks": 17
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/SquareInternal.lean",
+      "tasks": 11
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Edwards/EdwardsPoint/AsProjectiveNiels.lean",
+      "tasks": 9
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Field/FieldElement51/InvSqrt.lean",
+      "tasks": 4
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Field/FieldElement51/IsZero.lean",
+      "tasks": 2
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Field/FieldElement51/Pow22501.lean",
+      "tasks": 33
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Scalar/ClampInteger.lean",
+      "tasks": 3
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Scalar/Scalar/CtEq.lean",
+      "tasks": 2
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Scalar/Scalar/FromBytesModOrder.lean",
+      "tasks": 1
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Scalar/Scalar/FromBytesModOrderWide.lean",
+      "tasks": 2
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Scalar/Scalar/FromCanonicalBytes.lean",
+      "tasks": 3
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Scalar/Scalar/Invert.lean",
+      "tasks": 1
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Scalar/Scalar/IsCanonical.lean",
+      "tasks": 2
+    }
+  ]
+}
