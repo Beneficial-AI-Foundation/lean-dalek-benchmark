@@ -63,9 +63,3 @@ jobs:
             ### Source
             - Repository: [curve25519-dalek-lean-verify](https://github.com/Beneficial-AI-Foundation/curve25519-dalek-lean-verify)
             - Commit: [`${{ steps.source.outputs.commit }}`](https://github.com/Beneficial-AI-Foundation/curve25519-dalek-lean-verify/commit/${{ steps.source.outputs.commit }})
-
-            ### Changes
-            - Replaced task content with `sorry` placeholders
-
-            ### Review
-            Please review the `tasks-manifest.json` file for a summary of tasks.
