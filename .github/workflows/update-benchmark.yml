@@ -29,61 +29,32 @@ jobs:
       - name: Run update script
         run: npm run update
 
-      - name: Check for changes
-        id: changes
+      - name: Get source commit
+        id: source
         run: |
-          git add -A
-          if git diff --cached --quiet; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          else
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-            # Read source commit from manifest
-            echo "source_commit=$(jq -r '.sourceCommit' tasks-manifest.json)" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Configure Git
-        if: steps.changes.outputs.has_changes == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Create branch and commit
-        if: steps.changes.outputs.has_changes == 'true'
-        run: |
-          BRANCH_NAME="benchmark-update-$(date +%Y%m%d-%H%M%S)"
-          git checkout -b "$BRANCH_NAME"
-          git commit -m "Update benchmark dataset
-
-          Source commit: ${{ steps.changes.outputs.source_commit }}"
-          git push origin "$BRANCH_NAME"
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "commit=$(jq -r '.sourceCommit' tasks-manifest.json)" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
-        if: steps.changes.outputs.has_changes == 'true'
-        uses: actions/github-script@v7
-        env:
-          SOURCE_COMMIT: ${{ steps.changes.outputs.source_commit }}
+        uses: peter-evans/create-pull-request@v7
         with:
-          script: |
-            const sourceCommit = process.env.SOURCE_COMMIT;
-            const { data: pr } = await github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: 'Update benchmark dataset',
-              head: process.env.branch_name,
-              base: 'main',
-              body: `## Automated Benchmark Update
+          commit-message: |
+            Update benchmark dataset
+
+            Source commit: ${{ steps.source.outputs.commit }}
+          branch: benchmark-update
+          delete-branch: true
+          title: Update benchmark dataset
+          body: |
+            ## Automated Benchmark Update
 
             This PR was automatically created by the update benchmark workflow.
 
             ### Source
             - Repository: [curve25519-dalek-lean-verify](https://github.com/Beneficial-AI-Foundation/curve25519-dalek-lean-verify)
-            - Commit: [\`${sourceCommit.substring(0, 7)}\`](https://github.com/Beneficial-AI-Foundation/curve25519-dalek-lean-verify/commit/${sourceCommit})
+            - Commit: [`${{ steps.source.outputs.commit }}`](https://github.com/Beneficial-AI-Foundation/curve25519-dalek-lean-verify/commit/${{ steps.source.outputs.commit }})
 
             ### Changes
-            - Replaced task content with \`sorry\` placeholders
+            - Replaced task content with `sorry` placeholders
 
             ### Review
-            Please review the \`tasks-manifest.json\` file for a summary of tasks.`
-            });
-            console.log(`Created PR #${pr.number}`);
+            Please review the `tasks-manifest.json` file for a summary of tasks.
