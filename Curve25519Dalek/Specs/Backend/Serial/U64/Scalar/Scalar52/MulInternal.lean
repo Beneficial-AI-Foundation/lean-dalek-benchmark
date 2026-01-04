@@ -7,7 +7,7 @@ import Curve25519Dalek.Specs.Backend.Serial.U64.Scalar.M
 
 set_option linter.style.longLine false
 set_option linter.style.setOption false
-set_option maxHeartbeats 3000000
+set_option maxHeartbeats 4000000 -- scalr_tac exceeds standard heartbeats rates
 set_option exponentiation.threshold 500
 
 /-! # MulInternal
@@ -34,7 +34,8 @@ attribute [-simp] Int.reducePow Nat.reducePow
 theorem mul_internal_spec (a b : Array U64 5#usize)
     (ha : ∀ i < 5, a[i]!.val < 2 ^ 62) (hb : ∀ i < 5, b[i]!.val < 2 ^ 62) :
     ∃ result, mul_internal a b = ok (result) ∧
-    Scalar52_wide_as_Nat result = Scalar52_as_Nat a * Scalar52_as_Nat b := by
+    Scalar52_wide_as_Nat result = Scalar52_as_Nat a * Scalar52_as_Nat b ∧
+    (∀ i < 9, result[i]!.val < 2 ^ 127) := by
   unfold mul_internal
   unfold backend.serial.u64.scalar.Indexcurve25519_dalekbackendserialu64scalarScalar52UsizeU64.index
   progress*
@@ -89,6 +90,7 @@ theorem mul_internal_spec (a b : Array U64 5#usize)
   · -- BEGIN TASK
     sorry
     -- END TASK
+
 
 
 end curve25519_dalek.backend.serial.u64.scalar.Scalar52

@@ -1,8 +1,8 @@
 {
-  "sourceCommit": "0f4b20e6e36a71e936eccbc2f5dddcb5d04e14ce",
+  "sourceCommit": "faa69fc96a24b7e08d8eda6c80312e113d4b8e9d",
   "summary": {
     "totalFiles": 25,
-    "totalTasks": 172
+    "totalTasks": 169
   },
   "files": [
     {
@@ -39,11 +39,15 @@
     },
     {
       "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/Add.lean",
-      "tasks": 16
+      "tasks": 21
     },
     {
       "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/AsMontgomery.lean",
       "tasks": 2
+    },
+    {
+      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/ConditionalAddL.lean",
+      "tasks": 3
     },
     {
       "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/Invert.lean",
@@ -56,10 +60,6 @@
     {
       "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/MulInternal.lean",
       "tasks": 17
-    },
-    {
-      "file": "Curve25519Dalek/Specs/Backend/Serial/U64/Scalar/Scalar52/SquareInternal.lean",
-      "tasks": 11
     },
     {
       "file": "Curve25519Dalek/Specs/Edwards/EdwardsPoint/AsProjectiveNiels.lean",
