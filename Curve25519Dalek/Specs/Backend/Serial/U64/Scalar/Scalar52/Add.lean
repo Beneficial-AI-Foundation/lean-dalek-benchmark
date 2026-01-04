@@ -40,7 +40,7 @@ natural language specs:
 -/
 
 set_option maxHeartbeats 1000000 in
--- probably the simp_all is heavy
+-- simp_all is heavy
 /-- **Spec for `backend.serial.u64.scalar.Scalar52.add_loop`**:
 - Starting from index `i` with accumulator `sum` and carry `carry`
 - Computes limb-wise addition with carry propagation
@@ -112,10 +112,12 @@ decreasing_by scalar_decr_tac
 - The result represents the sum of the two input scalars modulo L
 -/
 @[progress]
-theorem add_spec (a b : Scalar52) (ha : ∀ i < 5, a[i]!.val < 2 ^ 52) (hb : ∀ i < 5, b[i]!.val < 2 ^ 52)
-    (ha' : Scalar52_as_Nat a < 2 ^ 259) (hb' : Scalar52_as_Nat b < 2 ^ 259) :
+theorem add_spec (a b : Scalar52)
+    (ha : ∀ i < 5, a[i]!.val < 2 ^ 52) (hb : ∀ i < 5, b[i]!.val < 2 ^ 52)
+    (ha' : Scalar52_as_Nat a < L) (hb' : Scalar52_as_Nat b < L) :
     ∃ v, add a b = ok v ∧
-    Scalar52_as_Nat v % L = (Scalar52_as_Nat a + Scalar52_as_Nat b) % L := by
+    Scalar52_as_Nat v ≡ Scalar52_as_Nat a + Scalar52_as_Nat b [MOD L] ∧
+    Scalar52_as_Nat v < L := by
   unfold add
   progress*
   · -- BEGIN TASK
@@ -130,5 +132,21 @@ theorem add_spec (a b : Scalar52) (ha : ∀ i < 5, a[i]!.val < 2 ^ 52) (hb : ∀
   · -- BEGIN TASK
     sorry
     -- END TASK
+  · -- BEGIN TASK
+    sorry
+    -- END TASK
+  · -- BEGIN TASK
+    sorry
+    -- END TASK
+  · -- BEGIN TASK
+    sorry
+    -- END TASK
+  · constructor
+    · -- BEGIN TASK
+      sorry
+      -- END TASK
+    · -- BEGIN TASK
+      sorry
+      -- END TASK
 
 end curve25519_dalek.backend.serial.u64.scalar.Scalar52
